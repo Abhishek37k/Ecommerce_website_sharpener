@@ -1,4 +1,7 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { useContext } from 'react';
+import { CartContext } from "../store/CartContext";
+
 
 const productsArr = [
   {
@@ -37,8 +40,9 @@ const merchArr = [
 ];
 
 function Home() {
+    const { addToCart } = useContext(CartContext);
   return (
-    <div style={{ backgroundColor: 'white', padding: '40px 0' }}>
+    <div className="bg-white py-5">
       <Container>
         {/* MUSIC Section */}
         <h2 className="text-center mb-4">MUSIC</h2>
@@ -50,21 +54,12 @@ function Home() {
                 <img
                   src={product.imageUrl}
                   alt={product.title}
-                  style={{
-                    width: '300px',
-                    height: '300px',
-                    objectFit: 'cover',
-                    display: 'block',
-                    margin: '0 auto'
-                  }}
+                  className="img-fluid"
+                  style={{ width: '300px', height: '300px', objectFit: 'cover' }}
                 />
                 <div className="d-flex justify-content-center align-items-center mt-3">
-                  <span style={{ color: '#777777', marginRight: '15px' }}>
-                    ${product.price}
-                  </span>
-                  <Button variant="outline-secondary" style={{ color: '#fff', backgroundColor: '#0EABDF' }}>
-                    ADD TO CART
-                  </Button>
+                  <span className="text-muted me-3">${product.price}</span>
+                  <Button variant="primary"  onClick={() => addToCart(product)}>ADD TO CART</Button>
                 </div>
               </div>
             </Col>
@@ -81,21 +76,12 @@ function Home() {
                 <img
                   src={item.imageUrl}
                   alt={item.title}
-                  style={{
-                    width: '300px',
-                    height: '300px',
-                    objectFit: 'cover',
-                    display: 'block',
-                    margin: '0 auto'
-                  }}
+                  className="img-fluid"
+                  style={{ width: '300px', height: '300px', objectFit: 'cover' }}
                 />
                 <div className="d-flex justify-content-center align-items-center mt-3">
-                  <span style={{ color: '#777777', marginRight: '15px' }}>
-                    ${item.price}
-                  </span>
-                  <Button variant="outline-secondary" style={{ color: '#fff', backgroundColor: '#0EABDF' }}>
-                    ADD TO CART
-                  </Button>
+                  <span className="text-muted me-3">${item.price}</span>
+                  <Button variant="primary"   onClick={() => addToCart(item)}>ADD TO CART</Button>
                 </div>
               </div>
             </Col>
@@ -104,14 +90,7 @@ function Home() {
 
         {/* SEE THE CART Button */}
         <div className="text-center mt-5">
-          <Button
-            style={{
-              backgroundColor: '#777777',
-              borderColor: '#777777',
-              color: 'white'
-            }}
-            size="lg"
-          >
+          <Button variant="dark" size="lg">
             See the Cart
           </Button>
         </div>
