@@ -1,9 +1,12 @@
 import { Container, Navbar, Nav, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { NavLink } from "react-router-dom";
 import Cart from "../Cart/Cart";
+import { CartContext } from "../store/CartContext";
 
 function Header() {
   const [showCart, setShowCart] = useState(false);
+  const { cartItems } = useContext(CartContext);
 
   const toggleCart = () => setShowCart(!showCart);
 
@@ -12,12 +15,18 @@ function Header() {
       <Navbar bg="dark" variant="dark" expand="md" sticky="top">
         <Container>
           <Nav className="mx-auto">
-            <Nav.Link disabled className="text-white px-3">HOME</Nav.Link>
-            <Nav.Link disabled className="text-white px-3">STORE</Nav.Link>
-            <Nav.Link disabled className="text-white px-3">ABOUT</Nav.Link>
+            <NavLink to="/" className="nav-link text-white px-3">
+              HOME
+            </NavLink>
+            <NavLink to="/store" className="nav-link text-white px-3">
+              STORE
+            </NavLink>
+            <NavLink to="/about" className="nav-link text-white px-3">
+              ABOUT
+            </NavLink>
           </Nav>
           <Button variant="outline-light" onClick={toggleCart}>
-            Cart
+            Cart ({cartItems.length})
           </Button>
         </Container>
       </Navbar>
