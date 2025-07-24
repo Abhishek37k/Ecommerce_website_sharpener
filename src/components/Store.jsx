@@ -1,46 +1,45 @@
-import { Container, Row, Col, Button } from 'react-bootstrap';
-import { useContext } from 'react';
-import { CartContext } from "../store/CartContext";
-
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { useContext } from "react";
+import { CartContext } from "../components/store/CartContext";
 
 const productsArr = [
   {
-    title: 'Colors',
+    title: "Colors",
     price: 100,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
   },
   {
-    title: 'Black and white Colors',
+    title: "Black and white Colors",
     price: 50,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
   },
   {
-    title: 'Yellow and Black Colors',
+    title: "Yellow and Black Colors",
     price: 70,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
   },
   {
-    title: 'Blue Color',
+    title: "Blue Color",
     price: 100,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
-  }
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+  },
 ];
 
 const merchArr = [
   {
-    title: 'T-Shirt',
+    title: "T-Shirt",
     price: 19.99,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Shirt.png',
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Shirt.png",
   },
   {
-    title: 'Coffee Cup',
+    title: "Coffee Cup",
     price: 6.99,
-    imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Cofee.png',
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Cofee.png",
   },
 ];
 
-function Home() {
-    const { addToCart } = useContext(CartContext);
+function Store() {
+  const { addToCart } = useContext(CartContext);
   return (
     <div className="bg-white py-5">
       <Container>
@@ -55,11 +54,17 @@ function Home() {
                   src={product.imageUrl}
                   alt={product.title}
                   className="img-fluid"
-                  style={{ width: '300px', height: '300px', objectFit: 'cover' }}
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    objectFit: "cover",
+                  }}
                 />
                 <div className="d-flex justify-content-center align-items-center mt-3">
                   <span className="text-muted me-3">${product.price}</span>
-                  <Button variant="primary"  onClick={() => addToCart(product)}>ADD TO CART</Button>
+                  <Button variant="primary" onClick={() => addToCart(product)}>
+                    ADD TO CART
+                  </Button>
                 </div>
               </div>
             </Col>
@@ -77,11 +82,17 @@ function Home() {
                   src={item.imageUrl}
                   alt={item.title}
                   className="img-fluid"
-                  style={{ width: '300px', height: '300px', objectFit: 'cover' }}
+                  style={{
+                    width: "300px",
+                    height: "300px",
+                    objectFit: "cover",
+                  }}
                 />
                 <div className="d-flex justify-content-center align-items-center mt-3">
                   <span className="text-muted me-3">${item.price}</span>
-                  <Button variant="primary"   onClick={() => addToCart(item)}>ADD TO CART</Button>
+                  <Button variant="primary" onClick={() => addToCart(item)}>
+                    ADD TO CART
+                  </Button>
                 </div>
               </div>
             </Col>
@@ -99,4 +110,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Store;
