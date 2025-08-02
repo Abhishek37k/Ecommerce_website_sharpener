@@ -24,6 +24,9 @@ function Header() {
             <NavLink to="/about" className="nav-link text-white px-3">
               ABOUT
             </NavLink>
+              <NavLink to="/contactus" className="nav-link text-white px-3">
+              CONTACT US
+            </NavLink>
           </Nav>
           <Button variant="outline-light" onClick={toggleCart}>
             Cart ({cartItems.length})
