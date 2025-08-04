@@ -1,6 +1,7 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useContext } from "react";
 import { CartContext } from "../components/store/CartContext";
+import { Link } from "react-router-dom";
 
 const productsArr = [
   {
@@ -40,26 +41,34 @@ const merchArr = [
 
 function Store() {
   const { addToCart } = useContext(CartContext);
+
   return (
     <div className="bg-white py-5">
       <Container>
+
         {/* MUSIC Section */}
         <h2 className="text-center mb-4">MUSIC</h2>
         <Row className="gy-4">
           {productsArr.map((product, idx) => (
             <Col key={idx} xs={12} sm={6} md={6} lg={6}>
               <div className="text-center">
-                <h5 className="mb-2">Album {idx + 1}</h5>
-                <img
-                  src={product.imageUrl}
-                  alt={product.title}
-                  className="img-fluid"
-                  style={{
-                    width: "300px",
-                    height: "300px",
-                    objectFit: "cover",
-                  }}
-                />
+                <Link
+               to={`/store/music/${idx}`} 
+
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <h5 className="mb-2">Album {idx + 1}</h5>
+                  <img
+                    src={product.imageUrl}
+                    alt={product.title}
+                    className="img-fluid"
+                    style={{
+                      width: "300px",
+                      height: "300px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Link>
                 <div className="d-flex justify-content-center align-items-center mt-3">
                   <span className="text-muted me-3">${product.price}</span>
                   <Button variant="primary" onClick={() => addToCart(product)}>
@@ -77,17 +86,22 @@ function Store() {
           {merchArr.map((item, idx) => (
             <Col key={idx} xs={12} sm={6} md={6} lg={6}>
               <div className="text-center">
-                <h5 className="mb-2">{item.title}</h5>
-                <img
-                  src={item.imageUrl}
-                  alt={item.title}
-                  className="img-fluid"
-                  style={{
-                    width: "300px",
-                    height: "300px",
-                    objectFit: "cover",
-                  }}
-                />
+                <Link
+                  to={`/store/merch/${idx}`}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <h5 className="mb-2">{item.title}</h5>
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="img-fluid"
+                    style={{
+                      width: "300px",
+                      height: "300px",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Link>
                 <div className="d-flex justify-content-center align-items-center mt-3">
                   <span className="text-muted me-3">${item.price}</span>
                   <Button variant="primary" onClick={() => addToCart(item)}>
