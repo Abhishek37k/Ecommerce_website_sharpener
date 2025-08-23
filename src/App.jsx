@@ -6,6 +6,7 @@ import Home from "./components/Home/Home";
 import Store from "./components/Store";
 import Contact_US from "./components/Contact_US";
 import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Footer from "./components/Footer/Footer";
 import { AuthContextProvider } from "./components/store/auth-context";
 import About from "./components/About/About";
@@ -19,12 +20,22 @@ function App() {
         <CartProvider>
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/store" element={<Store />} />
+           
+      
+            {/* Protected Route for Products */}
+          <Route 
+            path="/store" 
+            element={
+              <ProtectedRoute>
+                <Store />
+              </ProtectedRoute>
+            }
+          />
             <Route path="/about" element={<About />} />
             <Route path="/contactus" element={<Contact_US />} />
             <Route path="/store/:type/:id" element={<ProductDetail />} />
             <Route path="/login" element={<Login />} />
+             <Route path="/" element={<Home />} />
           </Routes>
           <Footer />
         </CartProvider>
