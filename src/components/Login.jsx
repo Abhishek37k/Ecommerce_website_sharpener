@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom"; 
-import AuthContext from '../components/store/Auth-context'; 
+import AuthContext from './store/auth-context'; 
 import classes from "./AuthForm.module.css";
 
 const FIREBASE_API_KEY = "AIzaSyB4flsAj8dncQ1rBlo5DUqgFkHIbb5vZMo";
