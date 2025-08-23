@@ -7,7 +7,7 @@ import Store from "./components/Store";
 import Contact_US from "./components/Contact_US";
 import Login from "./components/Login";
 import Footer from "./components/Footer/Footer";
-import { AuthContextProvider } from "./components/store/Auth-context";
+import { AuthContextProvider } from "./components/store/auth-context";
 import About from "./components/About/About";
 import { CartProvider } from "./components/store/CartContext";
 import ProductDetail from "./components/ProductDetail";
