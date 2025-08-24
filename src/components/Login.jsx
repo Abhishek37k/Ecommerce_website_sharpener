@@ -36,7 +36,7 @@ export default function Login() {
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error?.message || "Login failed");
 
-      authCtx.login(data.idToken);
+      authCtx.login(data.idToken, data.email); // Store token + email in context + localStorage
       navigate("/", { replace: true }); // ✅ v6 redirect
     } catch (e2) {
       setErr(e2.message);

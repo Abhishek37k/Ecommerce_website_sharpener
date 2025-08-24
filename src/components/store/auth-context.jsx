@@ -4,7 +4,7 @@ import React from "react";
 const authContext = React.createContext({
   token: "",
   isLoggedIn: false,
-  login: (token) => {},
+  login: (token, email) => {},
   logout: () => {},
 });
 
@@ -26,14 +26,16 @@ export const AuthContextProvider = (props) => {
     clearTimer();
     setToken(null);
     localStorage.removeItem("token");
+    localStorage.removeItem("email");
     localStorage.removeItem("tokenExpiry");
     navigate("/", { replace: true }); // ✅ v6 navigation
   };
 
-  const loginHandler = (newToken) => {
+  const loginHandler = (newToken, email) => {
     const expiryAt = Date.now() + EXP_MS;
     localStorage.setItem("token", newToken);
     localStorage.setItem("tokenExpiry", String(expiryAt));
+      if (email) localStorage.setItem("email", email);   
     setToken(newToken);
     clearTimer();
     timerRef.current = setTimeout(() => logoutHandler(), EXP_MS);

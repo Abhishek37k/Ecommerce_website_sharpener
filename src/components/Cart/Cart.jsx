@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { CartContext } from "../store/CartContext";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+
 import {
   Offcanvas,
   Button,
@@ -33,12 +34,16 @@ import {
 //   },
 // ];
 
+
 function Cart({ onClose }) {
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const { cartItems, removeFromCart, loadCart } = useContext(CartContext);
 
   const totalAmount = cartItems
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
+useEffect(() => {
+  loadCart();
+}, [loadCart]);
 
   return (
     <div
@@ -105,7 +110,7 @@ function Cart({ onClose }) {
                   <Button
                     variant="danger"
                     size="sm"
-                    onClick={() => removeFromCart(item.title)}
+                    onClick={() => removeFromCart(item)}
                   >
                     REMOVE
                   </Button>
